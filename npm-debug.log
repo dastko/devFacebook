@@ -1,0 +1,555 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--global',
+1 verbose cli   'yo',
+1 verbose cli   'bower',
+1 verbose cli   'grunt-cli' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.40
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'yo', null ]
+6 verbose cache add name=undefined spec="yo" args=["yo",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'yo',
+7 verbose parsed url   path: 'yo',
+7 verbose parsed url   href: 'yo' }
+8 verbose cache add [ 'bower', null ]
+9 verbose cache add name=undefined spec="bower" args=["bower",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'bower',
+10 verbose parsed url   path: 'bower',
+10 verbose parsed url   href: 'bower' }
+11 verbose cache add [ 'grunt-cli', null ]
+12 verbose cache add name=undefined spec="grunt-cli" args=["grunt-cli",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'grunt-cli',
+13 verbose parsed url   path: 'grunt-cli',
+13 verbose parsed url   href: 'grunt-cli' }
+14 silly lockFile c41975d1-yo yo
+15 verbose lock yo /home/dastko/.npm/c41975d1-yo.lock
+16 silly lockFile 206e3ce5-bower bower
+17 verbose lock bower /home/dastko/.npm/206e3ce5-bower.lock
+18 silly lockFile 671ef8ac-grunt-cli grunt-cli
+19 verbose lock grunt-cli /home/dastko/.npm/671ef8ac-grunt-cli.lock
+20 silly lockFile c41975d1-yo yo
+21 silly lockFile c41975d1-yo yo
+22 silly lockFile 206e3ce5-bower bower
+23 silly lockFile 206e3ce5-bower bower
+24 silly lockFile 671ef8ac-grunt-cli grunt-cli
+25 silly lockFile 671ef8ac-grunt-cli grunt-cli
+26 verbose addNamed [ 'yo', '' ]
+27 verbose addNamed [ null, '*' ]
+28 silly lockFile d937c28e-yo yo@
+29 verbose lock yo@ /home/dastko/.npm/d937c28e-yo.lock
+30 verbose addNamed [ 'bower', '' ]
+31 verbose addNamed [ null, '*' ]
+32 silly lockFile 1240aab1-bower bower@
+33 verbose lock bower@ /home/dastko/.npm/1240aab1-bower.lock
+34 verbose addNamed [ 'grunt-cli', '' ]
+35 verbose addNamed [ null, '*' ]
+36 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+37 verbose lock grunt-cli@ /home/dastko/.npm/d63f3d0b-grunt-cli.lock
+38 silly addNameRange { name: 'yo', range: '*', hasData: false }
+39 silly addNameRange { name: 'bower', range: '*', hasData: false }
+40 silly addNameRange { name: 'grunt-cli', range: '*', hasData: false }
+41 verbose request where is /yo
+42 verbose request registry https://registry.npmjs.org/
+43 verbose request id 9e6dc70bacc122fa
+44 verbose url raw /yo
+45 verbose url resolving [ 'https://registry.npmjs.org/', './yo' ]
+46 verbose url resolved https://registry.npmjs.org/yo
+47 verbose request where is https://registry.npmjs.org/yo
+48 info trying registry request attempt 1 at 09:01:54
+49 http GET https://registry.npmjs.org/yo
+50 verbose request where is /bower
+51 verbose request registry https://registry.npmjs.org/
+52 verbose url raw /bower
+53 verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
+54 verbose url resolved https://registry.npmjs.org/bower
+55 verbose request where is https://registry.npmjs.org/bower
+56 info trying registry request attempt 1 at 09:01:54
+57 http GET https://registry.npmjs.org/bower
+58 verbose request where is /grunt-cli
+59 verbose request registry https://registry.npmjs.org/
+60 verbose url raw /grunt-cli
+61 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-cli' ]
+62 verbose url resolved https://registry.npmjs.org/grunt-cli
+63 verbose request where is https://registry.npmjs.org/grunt-cli
+64 info trying registry request attempt 1 at 09:01:54
+65 verbose etag "6VNPK1MEUU4GXHKO1SVC2AHLJ"
+66 http GET https://registry.npmjs.org/grunt-cli
+67 http 200 https://registry.npmjs.org/grunt-cli
+68 silly registry.get cb [ 200,
+68 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+68 silly registry.get     etag: '"D4EPNI8S8SBTYB1L89EOKBS16"',
+68 silly registry.get     'content-type': 'application/json',
+68 silly registry.get     'cache-control': 'max-age=60',
+68 silly registry.get     'content-length': '21472',
+68 silly registry.get     'accept-ranges': 'bytes',
+68 silly registry.get     date: 'Mon, 24 Aug 2015 07:01:54 GMT',
+68 silly registry.get     via: '1.1 varnish',
+68 silly registry.get     age: '46',
+68 silly registry.get     connection: 'keep-alive',
+68 silly registry.get     'x-served-by': 'cache-lcy1132-LCY',
+68 silly registry.get     'x-cache': 'HIT',
+68 silly registry.get     'x-cache-hits': '1',
+68 silly registry.get     'x-timer': 'S1440399714.273136,VS0,VE0',
+68 silly registry.get     vary: 'Accept' } ]
+69 silly addNameRange number 2 { name: 'grunt-cli', range: '*', hasData: true }
+70 silly addNameRange versions [ 'grunt-cli',
+70 silly addNameRange   [ '0.1.0',
+70 silly addNameRange     '0.1.1',
+70 silly addNameRange     '0.1.2',
+70 silly addNameRange     '0.1.3',
+70 silly addNameRange     '0.1.4',
+70 silly addNameRange     '0.1.5',
+70 silly addNameRange     '0.1.6',
+70 silly addNameRange     '0.1.7',
+70 silly addNameRange     '0.1.8',
+70 silly addNameRange     '0.1.9',
+70 silly addNameRange     '0.1.10',
+70 silly addNameRange     '0.1.11',
+70 silly addNameRange     '0.1.12',
+70 silly addNameRange     '0.1.13' ] ]
+71 verbose addNamed [ 'grunt-cli', '0.1.13' ]
+72 verbose addNamed [ '0.1.13', '0.1.13' ]
+73 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+74 verbose lock grunt-cli@0.1.13 /home/dastko/.npm/28997503-grunt-cli-0-1-13.lock
+75 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+76 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+77 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+78 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+79 http 200 https://registry.npmjs.org/yo
+80 silly registry.get cb [ 200,
+80 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+80 silly registry.get     etag: '"9Q26KKMNJA31XDB9T64FPWQ9L"',
+80 silly registry.get     'content-type': 'application/json',
+80 silly registry.get     'cache-control': 'max-age=60',
+80 silly registry.get     'content-length': '34022',
+80 silly registry.get     'accept-ranges': 'bytes',
+80 silly registry.get     date: 'Mon, 24 Aug 2015 07:01:54 GMT',
+80 silly registry.get     via: '1.1 varnish',
+80 silly registry.get     age: '8',
+80 silly registry.get     connection: 'keep-alive',
+80 silly registry.get     'x-served-by': 'cache-fra1240-FRA',
+80 silly registry.get     'x-cache': 'HIT',
+80 silly registry.get     'x-cache-hits': '1',
+80 silly registry.get     'x-timer': 'S1440399714.357769,VS0,VE0',
+80 silly registry.get     vary: 'Accept' } ]
+81 silly addNameRange number 2 { name: 'yo', range: '*', hasData: true }
+82 silly addNameRange versions [ 'yo',
+82 silly addNameRange   [ '1.1.0',
+82 silly addNameRange     '1.1.1',
+82 silly addNameRange     '1.1.2',
+82 silly addNameRange     '1.2.0',
+82 silly addNameRange     '1.2.1',
+82 silly addNameRange     '1.3.0',
+82 silly addNameRange     '1.3.2',
+82 silly addNameRange     '1.3.3',
+82 silly addNameRange     '1.4.6',
+82 silly addNameRange     '1.4.7' ] ]
+83 verbose addNamed [ 'yo', '1.4.7' ]
+84 verbose addNamed [ '1.4.7', '1.4.7' ]
+85 silly lockFile 22bae6b4-yo-1-4-7 yo@1.4.7
+86 verbose lock yo@1.4.7 /home/dastko/.npm/22bae6b4-yo-1-4-7.lock
+87 silly lockFile ef4e4e38-gistry-npmjs-org-yo-yo-1-4-7-tgz https://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+88 verbose lock https://registry.npmjs.org/yo/-/yo-1.4.7.tgz /home/dastko/.npm/ef4e4e38-gistry-npmjs-org-yo-yo-1-4-7-tgz.lock
+89 verbose addRemoteTarball [ 'https://registry.npmjs.org/yo/-/yo-1.4.7.tgz',
+89 verbose addRemoteTarball   '7eecb354f6f4df2dafbc2da53d30f7f7fafcb450' ]
+90 info retry fetch attempt 1 at 09:01:54
+91 verbose fetch to= /tmp/npm-4181-qOpMHlxZ/registry.npmjs.org/yo/-/yo-1.4.7.tgz
+92 http GET https://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+93 http 200 https://registry.npmjs.org/bower
+94 silly registry.get cb [ 200,
+94 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+94 silly registry.get     etag: '"5QW19NRB2XQTFH80Q4IN5HWPS"',
+94 silly registry.get     'content-type': 'application/json',
+94 silly registry.get     'cache-control': 'max-age=60',
+94 silly registry.get     'content-length': '117518',
+94 silly registry.get     'accept-ranges': 'bytes',
+94 silly registry.get     date: 'Mon, 24 Aug 2015 07:01:54 GMT',
+94 silly registry.get     via: '1.1 varnish',
+94 silly registry.get     age: '51',
+94 silly registry.get     connection: 'keep-alive',
+94 silly registry.get     'x-served-by': 'cache-fra1234-FRA',
+94 silly registry.get     'x-cache': 'HIT',
+94 silly registry.get     'x-cache-hits': '2',
+94 silly registry.get     'x-timer': 'S1440399714.363809,VS0,VE0',
+94 silly registry.get     vary: 'Accept' } ]
+95 silly addNameRange number 2 { name: 'bower', range: '*', hasData: true }
+96 silly addNameRange versions [ 'bower',
+96 silly addNameRange   [ '0.1.0',
+96 silly addNameRange     '0.1.2',
+96 silly addNameRange     '0.1.3',
+96 silly addNameRange     '0.2.0',
+96 silly addNameRange     '0.3.0',
+96 silly addNameRange     '0.3.1',
+96 silly addNameRange     '0.3.2',
+96 silly addNameRange     '0.4.0',
+96 silly addNameRange     '0.5.0',
+96 silly addNameRange     '0.5.1',
+96 silly addNameRange     '0.6.0',
+96 silly addNameRange     '0.6.1',
+96 silly addNameRange     '0.6.2',
+96 silly addNameRange     '0.6.3',
+96 silly addNameRange     '0.6.4',
+96 silly addNameRange     '0.6.5',
+96 silly addNameRange     '0.6.6',
+96 silly addNameRange     '0.6.7',
+96 silly addNameRange     '0.6.8',
+96 silly addNameRange     '0.7.0',
+96 silly addNameRange     '0.7.1',
+96 silly addNameRange     '0.8.0',
+96 silly addNameRange     '0.8.1',
+96 silly addNameRange     '0.8.2',
+96 silly addNameRange     '0.8.3',
+96 silly addNameRange     '0.8.4',
+96 silly addNameRange     '0.8.5',
+96 silly addNameRange     '0.8.6',
+96 silly addNameRange     '0.9.0',
+96 silly addNameRange     '0.9.1',
+96 silly addNameRange     '0.9.2',
+96 silly addNameRange     '0.10.0',
+96 silly addNameRange     '1.0.0',
+96 silly addNameRange     '1.0.1',
+96 silly addNameRange     '1.0.2',
+96 silly addNameRange     '1.0.3',
+96 silly addNameRange     '1.1.0',
+96 silly addNameRange     '1.1.1',
+96 silly addNameRange     '1.1.2',
+96 silly addNameRange     '1.2.0',
+96 silly addNameRange     '1.2.1',
+96 silly addNameRange     '1.2.2',
+96 silly addNameRange     '1.2.3',
+96 silly addNameRange     '1.2.4',
+96 silly addNameRange     '1.2.5',
+96 silly addNameRange     '1.2.6',
+96 silly addNameRange     '1.2.7',
+96 silly addNameRange     '1.2.8',
+96 silly addNameRange     '1.3.0',
+96 silly addNameRange     '1.3.1',
+96 silly addNameRange     '1.3.2',
+96 silly addNameRange     '1.3.3',
+96 silly addNameRange     '1.3.4',
+96 silly addNameRange     '1.3.5',
+96 silly addNameRange     '1.3.6',
+96 silly addNameRange     '1.3.7',
+96 silly addNameRange     '1.3.8',
+96 silly addNameRange     '1.3.9',
+96 silly addNameRange     '1.3.10',
+96 silly addNameRange     '1.3.11',
+96 silly addNameRange     '1.3.12',
+96 silly addNameRange     '1.4.0',
+96 silly addNameRange     '1.4.1',
+96 silly addNameRange     '1.5.0',
+96 silly addNameRange     '1.5.1' ] ]
+97 verbose addNamed [ 'bower', '1.5.1' ]
+98 verbose addNamed [ '1.5.1', '1.5.1' ]
+99 silly lockFile ade5b00b-bower-1-5-1 bower@1.5.1
+100 verbose lock bower@1.5.1 /home/dastko/.npm/ade5b00b-bower-1-5-1.lock
+101 silly lockFile f3c887fa--npmjs-org-bower-bower-1-5-1-tgz https://registry.npmjs.org/bower/-/bower-1.5.1.tgz
+102 verbose lock https://registry.npmjs.org/bower/-/bower-1.5.1.tgz /home/dastko/.npm/f3c887fa--npmjs-org-bower-bower-1-5-1-tgz.lock
+103 verbose addRemoteTarball [ 'https://registry.npmjs.org/bower/-/bower-1.5.1.tgz',
+103 verbose addRemoteTarball   'a099d02fcd3952edb326011234b4fc616dfc3f36' ]
+104 info retry fetch attempt 1 at 09:01:54
+105 verbose fetch to= /tmp/npm-4181-qOpMHlxZ/registry.npmjs.org/bower/-/bower-1.5.1.tgz
+106 http GET https://registry.npmjs.org/bower/-/bower-1.5.1.tgz
+107 http 200 https://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+108 silly lockFile ef4e4e38-gistry-npmjs-org-yo-yo-1-4-7-tgz https://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+109 silly lockFile ef4e4e38-gistry-npmjs-org-yo-yo-1-4-7-tgz https://registry.npmjs.org/yo/-/yo-1.4.7.tgz
+110 silly lockFile 22bae6b4-yo-1-4-7 yo@1.4.7
+111 silly lockFile 22bae6b4-yo-1-4-7 yo@1.4.7
+112 silly lockFile d937c28e-yo yo@
+113 silly lockFile d937c28e-yo yo@
+114 http 200 https://registry.npmjs.org/bower/-/bower-1.5.1.tgz
+115 silly lockFile f3c887fa--npmjs-org-bower-bower-1-5-1-tgz https://registry.npmjs.org/bower/-/bower-1.5.1.tgz
+116 silly lockFile f3c887fa--npmjs-org-bower-bower-1-5-1-tgz https://registry.npmjs.org/bower/-/bower-1.5.1.tgz
+117 silly lockFile ade5b00b-bower-1-5-1 bower@1.5.1
+118 silly lockFile ade5b00b-bower-1-5-1 bower@1.5.1
+119 silly lockFile 1240aab1-bower bower@
+120 silly lockFile 1240aab1-bower bower@
+121 silly resolved [ { name: 'grunt-cli',
+121 silly resolved     description: 'The grunt command line interface.',
+121 silly resolved     version: '0.1.13',
+121 silly resolved     author: { name: 'Grunt Team' },
+121 silly resolved     homepage: 'http://gruntjs.com/',
+121 silly resolved     repository: { type: 'git', url: 'git://github.com/gruntjs/grunt-cli.git' },
+121 silly resolved     bugs: { url: 'http://github.com/gruntjs/grunt-cli/issues' },
+121 silly resolved     licenses: [ [Object] ],
+121 silly resolved     bin: { grunt: 'bin/grunt' },
+121 silly resolved     engines: { node: '>= 0.8.0' },
+121 silly resolved     scripts: { test: 'node bin/grunt test' },
+121 silly resolved     preferGlobal: true,
+121 silly resolved     dependencies: { nopt: '~1.0.10', 'findup-sync': '~0.1.0', resolve: '~0.3.1' },
+121 silly resolved     devDependencies: { grunt: '~0.4.0', 'grunt-contrib-jshint': '~0.2.0' },
+121 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+121 silly resolved     _id: 'grunt-cli@0.1.13',
+121 silly resolved     dist:
+121 silly resolved      { shasum: 'e9ebc4047631f5012d922770c39378133cad10f4',
+121 silly resolved        tarball: 'http://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz' },
+121 silly resolved     _from: 'grunt-cli@',
+121 silly resolved     _npmVersion: '1.3.24',
+121 silly resolved     _npmUser: { name: 'tkellen', email: 'tyler@sleekcode.net' },
+121 silly resolved     maintainers: [ [Object] ],
+121 silly resolved     directories: {},
+121 silly resolved     _shasum: 'e9ebc4047631f5012d922770c39378133cad10f4',
+121 silly resolved     _resolved: 'https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz',
+121 silly resolved     readme: 'ERROR: No README data found!' },
+121 silly resolved   { name: 'yo',
+121 silly resolved     version: '1.4.7',
+121 silly resolved     description: 'CLI tool for running Yeoman generators',
+121 silly resolved     license: 'BSD-2-Clause',
+121 silly resolved     bin: { yo: 'lib/cli.js' },
+121 silly resolved     author: { name: 'Yeoman' },
+121 silly resolved     repository: { type: 'git', url: 'https://github.com/yeoman/yo' },
+121 silly resolved     engines: { node: '>=0.10.0', npm: '>=2.8.0' },
+121 silly resolved     scripts:
+121 silly resolved      { test: 'jshint . && mocha test/**/*.js',
+121 silly resolved        postinstall: 'yodoctor',
+121 silly resolved        postupdate: 'yodoctor',
+121 silly resolved        prepublish: 'nsp audit-package' },
+121 silly resolved     files: [ 'lib' ],
+121 silly resolved     keywords:
+121 silly resolved      [ 'cli-app',
+121 silly resolved        'cli',
+121 silly resolved        'bin',
+121 silly resolved        'front-end',
+121 silly resolved        'development',
+121 silly resolved        'dev',
+121 silly resolved        'build',
+121 silly resolved        'web',
+121 silly resolved        'tool',
+121 silly resolved        'scaffold',
+121 silly resolved        'stack',
+121 silly resolved        'yeoman',
+121 silly resolved        'generator',
+121 silly resolved        'generate',
+121 silly resolved        'app',
+121 silly resolved        'boilerplate' ],
+121 silly resolved     dependencies:
+121 silly resolved      { 'array-uniq': '^1.0.2',
+121 silly resolved        async: '^1.0.0',
+121 silly resolved        chalk: '^1.0.0',
+121 silly resolved        configstore: '^1.0.0',
+121 silly resolved        'cross-spawn': '^0.4.0',
+121 silly resolved        figures: '^1.3.5',
+121 silly resolved        findup: '^0.1.5',
+121 silly resolved        fullname: '^1.0.0',
+121 silly resolved        got: '^3.2.0',
+121 silly resolved        'humanize-string': '^1.0.0',
+121 silly resolved        inquirer: '^0.8.0',
+121 silly resolved        insight: '^0.6.0',
+121 silly resolved        lodash: '^3.2.0',
+121 silly resolved        meow: '^3.0.0',
+121 silly resolved        'npm-keyword': '^1.1.1',
+121 silly resolved        opn: '^1.0.0',
+121 silly resolved        'package-json': '^1.1.0',
+121 silly resolved        repeating: '^1.1.2',
+121 silly resolved        'root-check': '^1.0.0',
+121 silly resolved        'sort-on': '^1.0.0',
+121 silly resolved        'string-length': '^1.0.0',
+121 silly resolved        titleize: '^1.0.0',
+121 silly resolved        'update-notifier': '^0.5.0',
+121 silly resolved        'user-home': '^1.1.0',
+121 silly resolved        'yeoman-character': '^1.0.0',
+121 silly resolved        'yeoman-doctor': '^1.0.0',
+121 silly resolved        'yeoman-environment': '^1.0.1',
+121 silly resolved        yosay: '^1.0.0' },
+121 silly resolved     devDependencies:
+121 silly resolved      { jshint: '^2.5.11',
+121 silly resolved        mocha: '^2.1.0',
+121 silly resolved        mockery: '^1.4.0',
+121 silly resolved        nock: '^2.0.1',
+121 silly resolved        nsp: '*',
+121 silly resolved        proxyquire: '^1.0.1',
+121 silly resolved        'registry-url': '^3.0.0',
+121 silly resolved        sinon: '^1.12.1' },
+121 silly resolved     preferGlobal: true,
+121 silly resolved     gitHead: '675d647162f1ecd7f290995078cf8ab42756bf9d',
+121 silly resolved     bugs: { url: 'https://github.com/yeoman/yo/issues' },
+121 silly resolved     homepage: 'https://github.com/yeoman/yo',
+121 silly resolved     _id: 'yo@1.4.7',
+121 silly resolved     _shasum: '7eecb354f6f4df2dafbc2da53d30f7f7fafcb450',
+121 silly resolved     _from: 'yo@',
+121 silly resolved     _npmVersion: '2.10.1',
+121 silly resolved     _nodeVersion: '0.12.4',
+121 silly resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+121 silly resolved     dist:
+121 silly resolved      { shasum: '7eecb354f6f4df2dafbc2da53d30f7f7fafcb450',
+121 silly resolved        tarball: 'http://registry.npmjs.org/yo/-/yo-1.4.7.tgz' },
+121 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+121 silly resolved     directories: {},
+121 silly resolved     _resolved: 'https://registry.npmjs.org/yo/-/yo-1.4.7.tgz' },
+121 silly resolved   { name: 'bower',
+121 silly resolved     version: '1.5.1',
+121 silly resolved     description: 'The browser package manager',
+121 silly resolved     author: { name: 'Twitter' },
+121 silly resolved     license: 'MIT',
+121 silly resolved     repository: { type: 'git', url: 'git+https://github.com/bower/bower.git' },
+121 silly resolved     main: 'lib',
+121 silly resolved     homepage: 'http://bower.io',
+121 silly resolved     engines: { node: '>=0.10.0' },
+121 silly resolved     dependencies:
+121 silly resolved      { abbrev: '^1.0.5',
+121 silly resolved        archy: '1.0.0',
+121 silly resolved        'bower-config': '^0.6.1',
+121 silly resolved        'bower-endpoint-parser': '^0.2.2',
+121 silly resolved        'bower-json': '^0.4.0',
+121 silly resolved        'bower-logger': '^0.2.2',
+121 silly resolved        'bower-registry-client': '^0.3.0',
+121 silly resolved        cardinal: '0.4.4',
+121 silly resolved        chalk: '^1.0.0',
+121 silly resolved        chmodr: '0.1.0',
+121 silly resolved        configstore: '^0.3.2',
+121 silly resolved        'decompress-zip': '^0.1.0',
+121 silly resolved        'deep-sort-object': '~0.1.1',
+121 silly resolved        'findup-sync': '^0.2.1',
+121 silly resolved        fstream: '^1.0.3',
+121 silly resolved        'fstream-ignore': '^1.0.2',
+121 silly resolved        github: '^0.2.3',
+121 silly resolved        glob: '^4.3.2',
+121 silly resolved        'graceful-fs': '^3.0.5',
+121 silly resolved        handlebars: '^2.0.0',
+121 silly resolved        inquirer: '0.8.0',
+121 silly resolved        insight: '^0.5.0',
+121 silly resolved        'is-root': '^1.0.0',
+121 silly resolved        junk: '^1.0.0',
+121 silly resolved        lockfile: '^1.0.0',
+121 silly resolved        'lru-cache': '^2.5.0',
+121 silly resolved        mkdirp: '0.5.0',
+121 silly resolved        mout: '^0.11.0',
+121 silly resolved        nopt: '^3.0.1',
+121 silly resolved        opn: '^1.0.1',
+121 silly resolved        'p-throttler': '0.1.1',
+121 silly resolved        promptly: '0.2.0',
+121 silly resolved        q: '^1.1.2',
+121 silly resolved        request: '2.53.0',
+121 silly resolved        'request-progress': '0.3.1',
+121 silly resolved        retry: '0.6.1',
+121 silly resolved        rimraf: '^2.2.8',
+121 silly resolved        semver: '^5.0.1',
+121 silly resolved        'shell-quote': '^1.4.2',
+121 silly resolved        'stringify-object': '^1.0.0',
+121 silly resolved        'tar-fs': '^1.4.1',
+121 silly resolved        tmp: '0.0.24',
+121 silly resolved        'update-notifier': '^0.3.0',
+121 silly resolved        'user-home': '^1.1.0',
+121 silly resolved        which: '^1.0.8' },
+121 silly resolved     devDependencies:
+121 silly resolved      { chai: '^1.10.0',
+121 silly resolved        coveralls: '^2.11.2',
+121 silly resolved        'expect.js': '^0.3.1',
+121 silly resolved        grunt: '^0.4.5',
+121 silly resolved        'grunt-cli': '^0.1.13',
+121 silly resolved        'grunt-contrib-jshint': '^0.10.0',
+121 silly resolved        'grunt-contrib-watch': '^0.6.1',
+121 silly resolved        'grunt-exec': '^0.4.6',
+121 silly resolved        'grunt-simple-mocha': '^0.4.0',
+121 silly resolved        istanbul: '^0.3.5',
+121 silly resolved        'load-grunt-tasks': '^2.0.0',
+121 silly resolved        mocha: '^2.1.0',
+121 silly resolved        multiline: '^1.0.2',
+121 silly resolved        nock: '^0.56.0',
+121 silly resolved        'node-uuid': '^1.4.2',
+121 silly resolved        proxyquire: '^1.3.0',
+121 silly resolved        'spawn-sync': '^1.0.5' },
+121 silly resolved     scripts: { test: 'grunt test' },
+121 silly resolved     bin: { bower: 'bin/bower' },
+121 silly resolved     files: [ 'bin', 'lib', 'templates' ],
+121 silly resolved     gitHead: '23afb3a12964e3b6e0716a9e4eccdba6cbf60f27',
+121 silly resolved     bugs: { url: 'https://github.com/bower/bower/issues' },
+121 silly resolved     _id: 'bower@1.5.1',
+121 silly resolved     _shasum: 'a099d02fcd3952edb326011234b4fc616dfc3f36',
+121 silly resolved     _from: 'bower@',
+121 silly resolved     _npmVersion: '2.11.3',
+121 silly resolved     _nodeVersion: '0.12.7',
+121 silly resolved     _npmUser: { name: 'sheerun', email: 'sheerun@sher.pl' },
+121 silly resolved     dist:
+121 silly resolved      { shasum: 'a099d02fcd3952edb326011234b4fc616dfc3f36',
+121 silly resolved        tarball: 'http://registry.npmjs.org/bower/-/bower-1.5.1.tgz' },
+121 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+121 silly resolved     directories: {},
+121 silly resolved     _resolved: 'https://registry.npmjs.org/bower/-/bower-1.5.1.tgz' } ]
+122 info install grunt-cli@0.1.13 into /usr/lib
+123 info install yo@1.4.7 into /usr/lib
+124 info install bower@1.5.1 into /usr/lib
+125 info installOne grunt-cli@0.1.13
+126 info installOne yo@1.4.7
+127 warn engine yo@1.4.7: wanted: {"node":">=0.10.0","npm":">=2.8.0"} (current: {"node":"0.10.40","npm":"1.4.28"})
+128 info installOne bower@1.5.1
+129 verbose lib/node_modules/grunt-cli unbuild
+130 verbose tar unpack /home/dastko/.npm/grunt-cli/0.1.13/package.tgz
+131 silly lockFile 2107e595-r-usr-lib-node-modules-grunt-cli tar:///usr/lib/node_modules/grunt-cli
+132 verbose lock tar:///usr/lib/node_modules/grunt-cli /home/dastko/.npm/2107e595-r-usr-lib-node-modules-grunt-cli.lock
+133 silly lockFile 31b7639a-npm-grunt-cli-0-1-13-package-tgz tar:///home/dastko/.npm/grunt-cli/0.1.13/package.tgz
+134 verbose lock tar:///home/dastko/.npm/grunt-cli/0.1.13/package.tgz /home/dastko/.npm/31b7639a-npm-grunt-cli-0-1-13-package-tgz.lock
+135 verbose lib/node_modules/bower unbuild
+136 verbose lib/node_modules/yo unbuild
+137 silly gunzTarPerm modes [ '775', '664' ]
+138 verbose tar unpack /home/dastko/.npm/bower/1.5.1/package.tgz
+139 silly lockFile 6f53a3f9-tar-usr-lib-node-modules-bower tar:///usr/lib/node_modules/bower
+140 verbose lock tar:///usr/lib/node_modules/bower /home/dastko/.npm/6f53a3f9-tar-usr-lib-node-modules-bower.lock
+141 silly lockFile 94aaafdb-stko-npm-bower-1-5-1-package-tgz tar:///home/dastko/.npm/bower/1.5.1/package.tgz
+142 verbose lock tar:///home/dastko/.npm/bower/1.5.1/package.tgz /home/dastko/.npm/94aaafdb-stko-npm-bower-1-5-1-package-tgz.lock
+143 verbose tar unpack /home/dastko/.npm/yo/1.4.7/package.tgz
+144 silly lockFile 7bedd6dc-tar-usr-lib-node-modules-yo tar:///usr/lib/node_modules/yo
+145 verbose lock tar:///usr/lib/node_modules/yo /home/dastko/.npm/7bedd6dc-tar-usr-lib-node-modules-yo.lock
+146 silly lockFile 6c55b230--dastko-npm-yo-1-4-7-package-tgz tar:///home/dastko/.npm/yo/1.4.7/package.tgz
+147 verbose lock tar:///home/dastko/.npm/yo/1.4.7/package.tgz /home/dastko/.npm/6c55b230--dastko-npm-yo-1-4-7-package-tgz.lock
+148 silly gunzTarPerm modes [ '775', '664' ]
+149 silly gunzTarPerm modes [ '775', '664' ]
+150 error Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli'
+150 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli']
+150 error   errno: 3,
+150 error   code: 'EACCES',
+150 error   path: '/usr/lib/node_modules/grunt-cli',
+150 error   fstream_type: 'Directory',
+150 error   fstream_path: '/usr/lib/node_modules/grunt-cli',
+150 error   fstream_class: 'DirWriter',
+150 error   fstream_stack:
+150 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+150 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+150 error      'Object.oncomplete (fs.js:108:15)' ] }
+151 error Please try running this command again as root/Administrator.
+152 error System Linux 3.19.0-26-generic
+153 error command "/usr/bin/node" "/usr/bin/npm" "install" "--global" "yo" "bower" "grunt-cli"
+154 error cwd /home/dastko/activator-dist-1.3.5/facebook
+155 error node -v v0.10.40
+156 error npm -v 1.4.28
+157 error path /usr/lib/node_modules/grunt-cli
+158 error fstream_path /usr/lib/node_modules/grunt-cli
+159 error fstream_type Directory
+160 error fstream_class DirWriter
+161 error code EACCES
+162 error errno 3
+163 error stack Error: EACCES, mkdir '/usr/lib/node_modules/grunt-cli'
+164 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+164 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+164 error fstream_stack Object.oncomplete (fs.js:108:15)
+165 verbose exit [ 3, true ]
