@@ -14,7 +14,6 @@ import play.mvc.Result;
  */
 public class UserCtrl extends Controller {
 
-    public static final String AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
     public static final String AUTH_TOKEN = "authToken";
 
     public static Result addFriend(long id, User friend) {
