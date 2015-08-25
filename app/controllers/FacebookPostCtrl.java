@@ -11,9 +11,9 @@ import play.mvc.*;
 /**
  * Created by dastko on 8/24/15.
  */
-@Security.Authenticated(helpers.Security.class)
 public class FacebookPostCtrl extends Controller {
 
+    @Security.Authenticated(helpers.Security.class)
     public Result addPost() {
         Form<PostForm> postForm = Form.form(PostForm.class).bindFromRequest();
 
@@ -37,6 +37,7 @@ public class FacebookPostCtrl extends Controller {
         return User.findByEmail(session().get("username"));
     }
 
+    @Security.Authenticated(helpers.Security.class)
     public Result getPosts(){
         return ok(Json.toJson(FacebookPost.findAll()));
     }

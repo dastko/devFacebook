@@ -12,9 +12,9 @@ import play.mvc.Security;
 /**
  * Created by dastko on 8/24/15.
  */
-@Security.Authenticated(helpers.Security.class)
 public class PostCommentCtrl extends Controller {
 
+    @Security.Authenticated(helpers.Security.class)
     public Result addComment() {
         Form<CommentForm> commentForm = Form.form(CommentForm.class).bindFromRequest();
 
@@ -23,7 +23,6 @@ public class PostCommentCtrl extends Controller {
         } else {
             PostComment newComment = new PostComment();
             FacebookPost facebookPost = FacebookPost.findBlogPostById(commentForm.get().postId);
-//            facebookPost.increaseLikes();
             facebookPost.save();
             newComment.facebookPost = facebookPost;
             newComment.content = commentForm.get().comment;

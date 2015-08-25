@@ -25,6 +25,6 @@ public class Security extends play.mvc.Security.Authenticator {
     }
     @Override
     public Result onUnauthorized(Http.Context context) {
-        return super.onUnauthorized(context);
+        return forbidden();
     }
 }
