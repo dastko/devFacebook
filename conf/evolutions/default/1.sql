@@ -7,6 +7,8 @@ create table facebook_post (
   id                        bigint auto_increment not null,
   content                   TEXT,
   user_id                   bigint,
+  likes                     integer,
+  date                      datetime,
   constraint pk_facebook_post primary key (id))
 ;
 
@@ -20,8 +22,13 @@ create table post_comment (
 
 create table user (
   id                        bigint auto_increment not null,
-  email                     varchar(255) not null,
+  email                     varchar(255),
+  name                      varchar(255),
   encrypted_password        varbinary(64) not null,
+  registration              datetime,
+  birthday                  datetime,
+  adress                    varchar(255),
+  gender                    varchar(255),
   constraint uq_user_email unique (email),
   constraint pk_user primary key (id))
 ;

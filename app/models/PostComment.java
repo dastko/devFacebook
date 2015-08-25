@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ public class PostComment extends Model {
     @Id
     public Long id;
     @ManyToOne
+    @JsonIgnore
     public FacebookPost facebookPost;
     @ManyToOne
     public User user;
@@ -39,5 +41,4 @@ public class PostComment extends Model {
                 .eq("user", user)
                 .findList();
     }
-
 }

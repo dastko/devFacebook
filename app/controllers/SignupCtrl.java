@@ -7,6 +7,8 @@ import play.data.validation.Constraints;
 import play.libs.Json;
 import play.mvc.*;
 
+import java.util.Date;
+
 public class SignupCtrl extends Controller {
 
     public Result index(){

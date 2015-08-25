@@ -1,10 +1,13 @@
 package models;
 
 import com.avaje.ebean.Model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.avaje.ebean.annotation.CreatedTimestamp;
+import play.data.format.Formats;
 import play.data.validation.Constraints;
+import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +25,11 @@ public class FacebookPost extends Model {
     public User user;
     @OneToMany(cascade = CascadeType.ALL)
     public List<PostComment> comments;
+    @Constraints.Min(1)
+    public Integer likes;
+    @Formats.DateTime(pattern="dd/MM/yyyy")
+    @Column(columnDefinition = "datetime")
+    public Date date = new Date();
 
 
     public static final Model.Finder<Long, FacebookPost> find = new Model.Finder<>(
@@ -49,5 +57,7 @@ public class FacebookPost extends Model {
         this.content = content;
     }
 
-
+    public void increaseLikes(){
+        this.likes += 1;
+    }
 }
