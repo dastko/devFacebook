@@ -2,6 +2,7 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import play.mvc.Security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,16 +30,24 @@ public class PostComment extends Model {
             PostComment.class);
 
     public static List<PostComment> findAllCommentsByPost(final FacebookPost facebookPost) {
-        return find
-                .where()
-                .eq("post", facebookPost)
-                .findList();
+        try {
+            return find
+                    .where()
+                    .eq("post", facebookPost)
+                    .findList();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static List<PostComment> findAllCommentsByUser(final User user) {
-        return find
-                .where()
-                .eq("user", user)
-                .findList();
+        try {
+            return find
+                    .where()
+                    .eq("user", user)
+                    .findList();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

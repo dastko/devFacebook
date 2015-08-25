@@ -6,6 +6,7 @@ import play.data.Form;
 import play.data.validation.Constraints;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 /**
@@ -13,12 +14,15 @@ import play.mvc.Result;
  */
 public class UserCtrl extends Controller {
 
-    public Result addFriend(long id, User friend) {
+    public static final  String AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
+    public static final String AUTH_TOKEN = "authToken";
+
+    public static Result addFriend(long id, User friend) {
         User.addFriend(id, friend);
         return ok();
     }
 
-    public static Result login() {
+    public Result login() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
             return badRequest(loginForm.errorsAsJson());
@@ -30,19 +34,18 @@ public class UserCtrl extends Controller {
         } else {
             session().clear();
             session("username", loggingInUser.email);
-
-            ObjectNode wrapper = Json.newObject();
-            ObjectNode msg = Json.newObject();
-            msg.put("message", "Logged in successfully");
-            msg.put("user", loggingInUser.email);
-            wrapper.replace("success", msg);
-            return ok(wrapper);
+            String authToken = user.createToken();
+            ObjectNode authTokenJson = Json.newObject();
+            authTokenJson.put(AUTH_TOKEN, authToken);
+            response().setCookie(AUTH_TOKEN, authToken);
+            return ok(authTokenJson);
         }
     }
 
-
     public static Result logout() {
         session().clear();
+        response().discardCookie(AUTH_TOKEN);
+        getUser().deleteToken();
         return ok(SignupCtrl.buildJsonResponse("success", "Logged out successfully"));
     }
 
@@ -66,4 +69,9 @@ public class UserCtrl extends Controller {
         @Constraints.Email
         public String email;
     }
+
+    public static User getUser() {
+        return (User) Http.Context.current().args.get("user");
+    }
+
 }

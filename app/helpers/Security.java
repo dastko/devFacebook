@@ -1,5 +1,6 @@
 package helpers;
 
+import controllers.UserCtrl;
 import models.User;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -11,26 +12,19 @@ public class Security extends play.mvc.Security.Authenticator {
 
     @Override
     public String getUsername(Http.Context ctx) {
-        String token = getTokenFromHeader(ctx);
-        if (token != null) {
-            User user = User.find.where().eq("authToken", token).findUnique();
+        User user = null;
+        String[] authTokenHeaderValues = ctx.request().headers().get(UserCtrl.AUTH_TOKEN_HEADER);
+        if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
+            user = User.findByAuthToken(authTokenHeaderValues[0]);
             if (user != null) {
-                return user.email;
+                ctx.args.put("user", user);
+                return user.getEmail();
             }
         }
         return null;
     }
-
     @Override
     public Result onUnauthorized(Http.Context context) {
         return super.onUnauthorized(context);
-    }
-
-    private String getTokenFromHeader(Http.Context ctx) {
-        String[] authTokenHeaderValues = ctx.request().headers().get("X-AUTH-TOKEN");
-        if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
-            return authTokenHeaderValues[0];
-        }
-        return null;
     }
 }

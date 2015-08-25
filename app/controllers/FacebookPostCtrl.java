@@ -11,6 +11,7 @@ import play.mvc.*;
 /**
  * Created by dastko on 8/24/15.
  */
+@Security.Authenticated(helpers.Security.class)
 public class FacebookPostCtrl extends Controller {
 
     public Result addPost() {

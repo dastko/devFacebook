@@ -7,10 +7,12 @@ import play.data.Form;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 /**
  * Created by dastko on 8/24/15.
  */
+@Security.Authenticated(helpers.Security.class)
 public class PostCommentCtrl extends Controller {
 
     public Result addComment() {

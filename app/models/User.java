@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="facebook_users")
@@ -45,13 +46,13 @@ public class User extends Model {
     public String gender;
     @ManyToMany
     @JoinTable(name="facebook_friends",
-            joinColumns=@JoinColumn(name="userId"),
-            inverseJoinColumns=@JoinColumn(name="friendId"))
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="friend_id"))
     private List <User> friends;
     @ManyToMany
     @JoinTable(name="facebook_friends",
-            joinColumns=@JoinColumn(name="friendId"),
-            inverseJoinColumns=@JoinColumn(name="userId"))
+            joinColumns=@JoinColumn(name="friend_id"),
+            inverseJoinColumns=@JoinColumn(name="user_id"))
     private List<User> friendOf;
     public String token;
 
@@ -61,23 +62,34 @@ public class User extends Model {
     public void setEmail(String email) {
         this.email = email.toLowerCase();
     }
+    public String getEmail() {
+        return email;
+    }
 
     public static final Finder<Long, User> find = new Finder<>(
              User.class);
 
     public static User findByEmailAndPassword(String email, String password) {
-        return find
-                .where()
-                .eq("email", email.toLowerCase())
-                .eq("encryptedPassword", getSha512(password))
-                .findUnique();
+        try {
+            return find
+                    .where()
+                    .eq("email", email.toLowerCase())
+                    .eq("encryptedPassword", getSha512(password))
+                    .findUnique();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static User findByEmail(String email) {
-        return find
-                .where()
-                .eq("email", email.toLowerCase())
-                .findUnique();
+        try {
+            return find
+                    .where()
+                    .eq("email", email.toLowerCase())
+                    .findUnique();
+        } catch (Exception e){
+            return null;
+        }
     }
 
     public static byte[] getSha512(String value) {
@@ -93,10 +105,37 @@ public class User extends Model {
     }
 
     public static void addFriend(long user_id, User friend){
-        User user = find.byId(user_id);
-        if(!user.friends.contains(friend)){
-            user.friends.add(friend);
+        try {
+            User user = find.byId(user_id);
+            if (!user.friends.contains(friend)) {
+                user.friends.add(friend);
+            }
+            user.save();
+        } catch (Exception e){
+            throw e;
         }
-        user.save();
+    }
+
+    public String createToken() {
+        token = UUID.randomUUID().toString();
+        save();
+        return token;
+    }
+
+    public void deleteToken() {
+        token = null;
+        save();
+    }
+
+    public static User findByAuthToken(String authToken) {
+        if (authToken == null) {
+            return null;
+        }
+        try  {
+            return find.where().eq("token", authToken).findUnique();
+        }
+        catch (Exception e) {
+            return null;
+        }
     }
 }

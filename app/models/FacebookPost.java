@@ -4,6 +4,7 @@ import com.avaje.ebean.Model;
 import com.avaje.ebean.annotation.CreatedTimestamp;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.mvc.Security;
 import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.persistence.*;
@@ -36,21 +37,33 @@ public class FacebookPost extends Model {
             FacebookPost.class);
 
     public static List<FacebookPost> findBlogPostsByUser(final User user) {
-        return find
-                .where()
-                .eq("user", user)
-                .findList();
+        try {
+            return find
+                    .where()
+                    .eq("user", user)
+                    .findList();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static FacebookPost findBlogPostById(final Long id) {
-        return find
-                .where()
-                .eq("id", id)
-                .findUnique();
+        try {
+            return find
+                    .where()
+                    .eq("id", id)
+                    .findUnique();
+        } catch (Exception e){
+            return null;
+        }
     }
 
     public static List <FacebookPost> findAll(){
-        return find.findList();
+        try {
+            return find.findList();
+        } catch (Exception e){
+            return null;
+        }
     }
 
     public void setContent(String content) {
