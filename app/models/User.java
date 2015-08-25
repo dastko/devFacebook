@@ -54,7 +54,8 @@ public class User extends Model {
             joinColumns=@JoinColumn(name="friend_id"),
             inverseJoinColumns=@JoinColumn(name="user_id"))
     private List<User> friendOf;
-    public String token;
+
+    private String token;
 
     public void setPassword(String password) {
         this.encryptedPassword = getSha512(password);

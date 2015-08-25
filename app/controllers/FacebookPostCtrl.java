@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.SecurityFilter;
 import models.FacebookPost;
 import models.User;
 import play.data.Form;
@@ -13,7 +14,7 @@ import play.mvc.*;
  */
 public class FacebookPostCtrl extends Controller {
 
-    @Security.Authenticated(helpers.Security.class)
+    @Security.Authenticated(SecurityFilter.class)
     public Result addPost() {
         Form<PostForm> postForm = Form.form(PostForm.class).bindFromRequest();
 
@@ -37,7 +38,6 @@ public class FacebookPostCtrl extends Controller {
         return User.findByEmail(session().get("username"));
     }
 
-    @Security.Authenticated(helpers.Security.class)
     public Result getPosts(){
         return ok(Json.toJson(FacebookPost.findAll()));
     }

@@ -1,5 +1,6 @@
 package controllers;
 
+import helpers.SecurityFilter;
 import models.FacebookPost;
 import models.PostComment;
 import models.User;
@@ -12,9 +13,9 @@ import play.mvc.Security;
 /**
  * Created by dastko on 8/24/15.
  */
+@Security.Authenticated(SecurityFilter.class)
 public class PostCommentCtrl extends Controller {
 
-    @Security.Authenticated(helpers.Security.class)
     public Result addComment() {
         Form<CommentForm> commentForm = Form.form(CommentForm.class).bindFromRequest();
 

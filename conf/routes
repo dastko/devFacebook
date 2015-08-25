@@ -4,10 +4,11 @@
 
 # Home page
 POST        /api/signup          controllers.SignupCtrl.signup()
-GET         /api/post           controllers.FacebookPostCtrl.getPosts()
+GET         /api/posts            controllers.FacebookPostCtrl.getPosts()
 POST        /api/post            controllers.FacebookPostCtrl.addPost()
 POST        /api/comment         controllers.PostCommentCtrl.addComment()
 POST        /api/login           controllers.UserCtrl.login()
+GET         /api/logout          controllers.UserCtrl.logout()
 
 
 # Map static resources from the /public folder to the /assets URL path

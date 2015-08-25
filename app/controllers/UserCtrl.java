@@ -14,7 +14,7 @@ import play.mvc.Result;
  */
 public class UserCtrl extends Controller {
 
-    public static final  String AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
+    public static final String AUTH_TOKEN_HEADER = "X-AUTH-TOKEN";
     public static final String AUTH_TOKEN = "authToken";
 
     public static Result addFriend(long id, User friend) {
@@ -42,25 +42,25 @@ public class UserCtrl extends Controller {
         }
     }
 
-    public static Result logout() {
+    public Result logout() {
         session().clear();
         response().discardCookie(AUTH_TOKEN);
         getUser().deleteToken();
         return ok(SignupCtrl.buildJsonResponse("success", "Logged out successfully"));
     }
 
-    public static Result isAuthenticated() {
-        if(session().get("username") == null) {
-            return unauthorized();
-        } else {
-            ObjectNode wrapper = Json.newObject();
-            ObjectNode msg = Json.newObject();
-            msg.put("message", "User is logged in already");
-            msg.put("user", session().get("username"));
-            wrapper.replace("success", msg);
-            return ok(wrapper);
-        }
-    }
+//    public static Result isAuthenticated() {
+//        if(session().get("username") == null) {
+//            return unauthorized();
+//        } else {
+//            ObjectNode wrapper = Json.newObject();
+//            ObjectNode msg = Json.newObject();
+//            msg.put("message", "User is logged in already");
+//            msg.put("user", session().get("username"));
+//            wrapper.replace("success", msg);
+//            return ok(wrapper);
+//        }
+//    }
 
     public static class Login {
         @Constraints.Required
@@ -71,7 +71,7 @@ public class UserCtrl extends Controller {
     }
 
     public static User getUser() {
-        return (User) Http.Context.current().args.get("user");
+        return (User) Http.Context.current().args.get("username");
     }
 
 }
