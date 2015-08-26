@@ -2,6 +2,9 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import helpers.SessionHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 
@@ -14,8 +17,10 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="facebook_users")
+@Table(name = "facebook_users")
 public class User extends Model {
+
+    final static Logger logger = LoggerFactory.getLogger(User.class);
 
     @Id
     public Long id;
@@ -32,10 +37,10 @@ public class User extends Model {
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     public List<FacebookPost> facebookPostList;
-    @Formats.DateTime(pattern="dd/MM/yyyy")
+    @Formats.DateTime(pattern = "dd/MM/yyyy")
     @Column(columnDefinition = "datetime")
     public Date registration = new Date();
-    @Formats.DateTime(pattern="dd/MM/yyyy")
+    @Formats.DateTime(pattern = "dd/MM/yyyy")
     @Column(columnDefinition = "datetime")
     public Date birthday;
     @Constraints.MaxLength(20)
@@ -43,14 +48,14 @@ public class User extends Model {
     @Constraints.MaxLength(20)
     public String gender;
     @ManyToMany
-    @JoinTable(name="facebook_friends",
-            joinColumns=@JoinColumn(name="user_id"),
-            inverseJoinColumns=@JoinColumn(name="friend_id"))
-    private List <User> friends;
+    @JoinTable(name = "facebook_friends",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id"))
+    private List<User> friends;
     @ManyToMany
-    @JoinTable(name="facebook_friends",
-            joinColumns=@JoinColumn(name="friend_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id"))
+    @JoinTable(name = "facebook_friends",
+            joinColumns = @JoinColumn(name = "friend_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> friendOf;
 
     private String token;
@@ -58,69 +63,53 @@ public class User extends Model {
     public void setPassword(String password) {
         this.encryptedPassword = getSha512(password);
     }
+
     public void setEmail(String email) {
         this.email = email.toLowerCase();
     }
+
     public String getEmail() {
         return email;
     }
 
     public static final Finder<Long, User> find = new Finder<>(
-             User.class);
+            User.class);
 
     public static User findByEmailAndPassword(String email, String password) {
-        try {
-            return find
-                    .where()
-                    .eq("email", email.toLowerCase())
-                    .eq("encryptedPassword", getSha512(password))
-                    .findUnique();
-        } catch (Exception e) {
-            return null;
-        }
+        return find
+                .where()
+                .eq("email", email.toLowerCase())
+                .eq("encryptedPassword", getSha512(password))
+                .findUnique();
     }
 
     public static User findByEmail(String email) {
-        try {
-            return find
-                    .where()
-                    .eq("email", email.toLowerCase())
-                    .findUnique();
-        } catch (Exception e){
-            return null;
-        }
+        return find
+                .where()
+                .eq("email", email.toLowerCase())
+                .findUnique();
     }
 
-    public static List <User> findAll(){
-        try {
-            return find.findList();
-        } catch (Exception e){
-            return null;
-        }
+    public static List<User> findAll() {
+        return find.findList();
     }
 
     public static byte[] getSha512(String value) {
         try {
             return MessageDigest.getInstance("SHA-512").digest(value.getBytes("UTF-8"));
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
-        }
-        catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void addFriend(long user_id, User friend){
-        try {
-            User user = find.byId(user_id);
-            if (!user.friends.contains(friend)) {
-                user.friends.add(friend);
-            }
-            user.save();
-        } catch (Exception e){
-            throw e;
+    public static void addFriend(long user_id, User friend) {
+        User user = find.byId(user_id);
+        if (!user.friends.contains(friend)) {
+            user.friends.add(friend);
         }
+        user.save();
     }
 
     public String createToken() {
@@ -136,13 +125,7 @@ public class User extends Model {
 
     public static User findByAuthToken(String authToken) {
         if (authToken == null) {
-            return null;
         }
-        try  {
-            return find.where().eq("token", authToken).findUnique();
-        }
-        catch (Exception e) {
-            return null;
-        }
+        return find.where().eq("token", authToken).findUnique();
     }
 }

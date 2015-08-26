@@ -9,6 +9,8 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.*;
 
+import java.util.List;
+
 /**
  * Created by dastko on 8/24/15.
  */
@@ -40,5 +42,10 @@ public class FacebookPostCtrl extends Controller {
 
     public Result getPosts(){
         return ok(Json.toJson(FacebookPost.findAll()));
+    }
+
+    public Result getPostByUser(){
+        List posts = FacebookPost.findBlogPostsByUser(getUser());
+        return ok(Json.toJson(posts));
     }
 }

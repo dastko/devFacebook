@@ -10,7 +10,8 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  evolutions
+  evolutions,
+  "com.typesafe.play" %% "play-mailer" % "2.4.1"
 )
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.27"

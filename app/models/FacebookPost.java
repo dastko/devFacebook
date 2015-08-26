@@ -1,7 +1,12 @@
 package models;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlQuery;
+import com.avaje.ebean.SqlRow;
 import com.avaje.ebean.annotation.CreatedTimestamp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.mvc.Security;
@@ -37,33 +42,28 @@ public class FacebookPost extends Model {
             FacebookPost.class);
 
     public static List<FacebookPost> findBlogPostsByUser(final User user) {
-        try {
             return find
                     .where()
                     .eq("user", user)
                     .findList();
-        } catch (Exception e) {
-            return null;
-        }
     }
 
     public static FacebookPost findBlogPostById(final Long id) {
-        try {
             return find
                     .where()
                     .eq("id", id)
                     .findUnique();
-        } catch (Exception e){
-            return null;
-        }
     }
 
     public static List <FacebookPost> findAll(){
-        try {
             return find.findList();
-        } catch (Exception e){
-            return null;
-        }
+    }
+
+    public static List findPostsOfFriends(){
+        String sql = "select * from facebook_friends f join facebook_post p on f.friend_id=p.id";
+        SqlQuery sqlQuery = Ebean.createSqlQuery(sql);
+        List<SqlRow> list = sqlQuery.findList();
+        return list;
     }
 
     public void setContent(String content) {
