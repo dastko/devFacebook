@@ -1,11 +1,9 @@
 package models;
 
 import com.avaje.ebean.Model;
-import com.avaje.ebean.annotation.CreatedTimestamp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.persistence.*;
 import java.io.UnsupportedEncodingException;
@@ -39,7 +37,7 @@ public class User extends Model {
     public Date registration = new Date();
     @Formats.DateTime(pattern="dd/MM/yyyy")
     @Column(columnDefinition = "datetime")
-    public Date birthday = new Date();
+    public Date birthday;
     @Constraints.MaxLength(20)
     public String adress;
     @Constraints.MaxLength(20)
@@ -88,6 +86,14 @@ public class User extends Model {
                     .where()
                     .eq("email", email.toLowerCase())
                     .findUnique();
+        } catch (Exception e){
+            return null;
+        }
+    }
+
+    public static List <User> findAll(){
+        try {
+            return find.findList();
         } catch (Exception e){
             return null;
         }
