@@ -4,6 +4,8 @@ import helpers.SecurityFilter;
 import models.FacebookPost;
 import models.PostComment;
 import models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
@@ -15,6 +17,8 @@ import play.mvc.Security;
  */
 @Security.Authenticated(SecurityFilter.class)
 public class PostCommentCtrl extends Controller {
+
+    final static Logger logger = LoggerFactory.getLogger(FacebookPostCtrl.class);
 
     public Result addComment() {
         Form<CommentForm> commentForm = Form.form(CommentForm.class).bindFromRequest();
@@ -33,6 +37,11 @@ public class PostCommentCtrl extends Controller {
         }
     }
 
+    private static User getUser() {
+        return User.findByEmail(session().get("username"));
+    }
+
+
     public static class CommentForm {
 
         @Constraints.Required
@@ -40,9 +49,4 @@ public class PostCommentCtrl extends Controller {
         @Constraints.Required
         public String comment;
     }
-
-    private static User getUser() {
-        return User.findByEmail(session().get("username"));
-    }
-
 }

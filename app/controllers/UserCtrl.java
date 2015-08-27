@@ -2,7 +2,10 @@ package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import helpers.SessionHelper;
+import models.Friendship;
 import models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.libs.Json;
@@ -18,15 +21,14 @@ import java.util.List;
  */
 public class UserCtrl extends Controller {
 
+    final static Logger logger = LoggerFactory.getLogger(FacebookPostCtrl.class);
+
     public static final String AUTH_TOKEN = "authToken";
     public static List <User> users = new ArrayList<>();
 
     public Result addFriend(long id) {
-        try {
-            User.addFriend(id, SessionHelper.currentUser(ctx()));
-        } catch (Exception e){
-            return forbidden();
-        }
+        Friendship friendship = new Friendship(SessionHelper.currentUser(ctx()), User.findById(id));
+        friendship.save();
         return ok(SignupCtrl.buildJsonResponse("Success", "User Succ Add"));
     }
 
@@ -50,7 +52,7 @@ public class UserCtrl extends Controller {
             ObjectNode authTokenJson = Json.newObject();
             authTokenJson.put(AUTH_TOKEN, authToken);
             response().setCookie(AUTH_TOKEN, authToken);
-            return ok(SignupCtrl.buildJsonResponse("success", "Login in successfully"));
+            return ok(Json.toJson(user));
         }
     }
 

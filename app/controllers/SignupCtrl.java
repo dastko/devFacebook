@@ -2,12 +2,16 @@ package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.Form;
 import play.data.validation.Constraints;
 import play.libs.Json;
 import play.mvc.*;
 
 public class SignupCtrl extends Controller {
+
+    final static Logger logger = LoggerFactory.getLogger(FacebookPostCtrl.class);
 
     public Result signup() {
         Form<SignUp> signUpForm = Form.form(SignUp.class).bindFromRequest();

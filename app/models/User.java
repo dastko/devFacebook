@@ -2,28 +2,37 @@ package models;
 
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import helpers.SessionHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import controllers.FacebookPostCtrl;
+import controllers.UserCtrl;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-
 import javax.persistence.*;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "facebook_users")
+@Table(name = "users")
 public class User extends Model {
 
-    final static Logger logger = LoggerFactory.getLogger(User.class);
+    private static final String USER ="user";
 
     @Id
     public Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
     @Column(unique = true)
     @Constraints.MaxLength(255)
     @Constraints.Required
@@ -47,18 +56,10 @@ public class User extends Model {
     public String adress;
     @Constraints.MaxLength(20)
     public String gender;
-    @ManyToMany
-    @JoinTable(name = "facebook_friends",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "friend_id"))
-    private List<User> friends;
-    @ManyToMany
-    @JoinTable(name = "facebook_friends",
-            joinColumns = @JoinColumn(name = "friend_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> friendOf;
 
     private String token;
+    public String role = USER;
+
 
     public void setPassword(String password) {
         this.encryptedPassword = getSha512(password);
@@ -94,6 +95,10 @@ public class User extends Model {
         return find.findList();
     }
 
+    public static User findById(long id){
+        return find.byId(id);
+    }
+
     public static byte[] getSha512(String value) {
         try {
             return MessageDigest.getInstance("SHA-512").digest(value.getBytes("UTF-8"));
@@ -106,10 +111,12 @@ public class User extends Model {
 
     public static void addFriend(long user_id, User friend) {
         User user = find.byId(user_id);
-        if (!user.friends.contains(friend)) {
-            user.friends.add(friend);
-        }
+//        if (!user.friends.contains(friend) && user_id != friend.id && !friend.friends.contains(user)) {
+//            user.friends.add(friend);
+//        }
         user.save();
+        friend.save();
+        // Ukoliko korisnik potvrdi zahtjev za prijateljstvom
     }
 
     public String createToken() {
@@ -127,5 +134,10 @@ public class User extends Model {
         if (authToken == null) {
         }
         return find.where().eq("token", authToken).findUnique();
+    }
+
+    public static List<User> getFriendsList() {
+        User u = FacebookPostCtrl.getUser();
+        return null;
     }
 }

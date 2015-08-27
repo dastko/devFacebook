@@ -1,17 +1,8 @@
 package models;
 
-import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
-import com.avaje.ebean.SqlQuery;
-import com.avaje.ebean.SqlRow;
-import com.avaje.ebean.annotation.CreatedTimestamp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import play.mvc.Security;
-import sun.util.calendar.LocalGregorianCalendar;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +28,6 @@ public class FacebookPost extends Model {
     @Column(columnDefinition = "datetime")
     public Date date = new Date();
 
-
     public static final Model.Finder<Long, FacebookPost> find = new Model.Finder<>(
             FacebookPost.class);
 
@@ -59,11 +49,12 @@ public class FacebookPost extends Model {
             return find.findList();
     }
 
-    public static List findPostsOfFriends(){
-        String sql = "select * from facebook_friends f join facebook_post p on f.friend_id=p.id";
-        SqlQuery sqlQuery = Ebean.createSqlQuery(sql);
-        List<SqlRow> list = sqlQuery.findList();
-        return list;
+    public static List findPostsOfFriends(List <User> users){
+        return find.where().in("user", users).findList();
+
+//        String sql = "select * from facebook_friends f join facebook_post p on f.friend_id=p.id";
+//        SqlQuery sqlQuery = Ebean.createSqlQuery(sql);
+//        List<SqlRow> list = sqlQuery.findList();
     }
 
     public void setContent(String content) {
