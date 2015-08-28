@@ -12,7 +12,6 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,9 @@ public class UserCtrl extends Controller {
 
     public Result addFriend(long id) {
         Friendship friendship = new Friendship(SessionHelper.currentUser(ctx()), User.findById(id));
-        friendship.save();
+        if(!friendship.getFriendAccepter().email.equals(friendship.getFriendRequester().email)){
+            friendship.save();
+        }
         return ok(SignupCtrl.buildJsonResponse("Success", "User Succ Add"));
     }
 
@@ -44,10 +45,9 @@ public class UserCtrl extends Controller {
         } else {
             session().clear();
             session("username", loggingInUser.email);
-            if(users.contains(user)){
-                users.remove(user);
+            if(!users.contains(user)) {
+                users.add(user);
             }
-            users.add(user);
             String authToken = user.createToken();
             ObjectNode authTokenJson = Json.newObject();
             authTokenJson.put(AUTH_TOKEN, authToken);

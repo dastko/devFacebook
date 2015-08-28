@@ -109,16 +109,6 @@ public class User extends Model {
         }
     }
 
-    public static void addFriend(long user_id, User friend) {
-        User user = find.byId(user_id);
-//        if (!user.friends.contains(friend) && user_id != friend.id && !friend.friends.contains(user)) {
-//            user.friends.add(friend);
-//        }
-        user.save();
-        friend.save();
-        // Ukoliko korisnik potvrdi zahtjev za prijateljstvom
-    }
-
     public String createToken() {
         token = UUID.randomUUID().toString();
         save();
@@ -134,10 +124,5 @@ public class User extends Model {
         if (authToken == null) {
         }
         return find.where().eq("token", authToken).findUnique();
-    }
-
-    public static List<User> getFriendsList() {
-        User u = FacebookPostCtrl.getUser();
-        return null;
     }
 }

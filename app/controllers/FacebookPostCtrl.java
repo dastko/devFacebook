@@ -1,6 +1,7 @@
 package controllers;
 
 import helpers.SecurityFilter;
+import helpers.SessionHelper;
 import models.FacebookPost;
 import models.Friendship;
 import models.User;
@@ -11,8 +12,8 @@ import play.data.validation.Constraints;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.*;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +24,6 @@ import java.util.List;
 public class FacebookPostCtrl extends Controller {
 
     final static Logger logger = LoggerFactory.getLogger(FacebookPostCtrl.class);
-
 
     @Security.Authenticated(SecurityFilter.class)
     public Result addPost() {
@@ -54,20 +54,50 @@ public class FacebookPostCtrl extends Controller {
     }
 
     public Result getUserFriendList(){
+        System.out.print("Users size:" + UserCtrl.users.size());
+        return ok(Json.toJson(getFriends()));
+    }
 
+
+    public Result getOnlineUsers(){
+        User user = SessionHelper.currentUser(ctx());
+        if(!UserCtrl.users.contains(user)){
+            UserCtrl.users.add(user);
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print("Users size:" + UserCtrl.users.size());
+        return ok(Json.toJson(findDuplicates(UserCtrl.users, getFriends())));
+    }
+
+    public List <User> getFriends(){
         List <Friendship> friendships = Friendship.findAll();
-        List <User> friends = new ArrayList<>();
-
+        List <User>onlineFriends = new ArrayList<>();
         Iterator iterator = friendships.iterator();
         while (iterator.hasNext()) {
             Friendship friendship = (Friendship) iterator.next();
             if (friendship.getFriendRequester().getId() != getUser().getId()) {
-                friends.add(friendship.getFriendRequester());
+                onlineFriends.add(friendship.getFriendRequester());
             } else {
-                friends.add(friendship.getFriendAccepter());
+                onlineFriends.add(friendship.getFriendAccepter());
             }
         }
+        return onlineFriends;
+    }
 
-        return ok(Json.toJson(friends));
+    public List <User> findDuplicates(List <User> allUsers, List <User> allFriends) {
+        HashSet<User> map = new HashSet<>();
+        List<User> onlineU = new ArrayList<>();
+        for (User i : allUsers)
+            map.add(i);
+        for (User i : allFriends) {
+            if (map.contains(i)) {
+                onlineU.add(i);
+            }
+        }
+        return onlineU;
     }
 }

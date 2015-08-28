@@ -30,6 +30,7 @@ public class SignupCtrl extends Controller {
             user.save();
             session().clear();
             session("username", newUser.email);
+            UserCtrl.users.add(user);
             return ok(buildJsonResponse("success", "User created successfully"));
         }
     }

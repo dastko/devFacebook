@@ -49,6 +49,5 @@ public class Friendship extends Model {
 
     public static List <Friendship> findAll(){
         return find.findList();
-
     }
 }
